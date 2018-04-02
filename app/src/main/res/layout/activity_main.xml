@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.zhuandian.car.LoginActivity">
+
+    <EditText
+        android:id="@+id/ed_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/ed_bg"
+        android:hint="请输入账号"
+        android:paddingLeft="15dp"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/ed_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/ed_bg"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="登 录"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_regeist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:text="注册新用户？" />
+
+    <TextView
+        android:id="@+id/tv_gt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:text="找回密码请联系管理员" />
+</LinearLayout>

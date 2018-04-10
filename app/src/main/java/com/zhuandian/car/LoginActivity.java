@@ -1,6 +1,7 @@
 package com.zhuandian.car;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,17 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.tv_login, R.id.tv_regeist,R.id.tv_gt_password})
+    @OnClick({R.id.tv_login, R.id.tv_regeist, R.id.tv_gt_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
                 login();
                 break;
             case R.id.tv_regeist:
-                startActivity(new Intent(this,RegeistActivity.class));
+                startActivity(new Intent(this, RegeistActivity.class));
                 break;
             case R.id.tv_gt_password:
-                startActivity(new Intent(this,GetPasswordActivity.class));
+                startActivity(new Intent(this, GetPasswordActivity.class));
                 break;
         }
     }
@@ -55,16 +56,20 @@ public class LoginActivity extends AppCompatActivity {
     private void login() {
         username = edName.getText().toString();
         password = edPassword.getText().toString();
-        MyUser user = new MyUser();
+        final MyUser user = new MyUser();
         user.setPassword(password);
         user.setUsername(username);
         user.login(new SaveListener<MyUser>() {
             @Override
             public void done(MyUser myUser, BmobException e) {
-                if (e==null) {
+                if (e == null) {
                     startActivity(new Intent(LoginActivity.this, ChoseCarActivity.class));
+                    SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("user_id", user.getObjectId());
+                    editor.commit();
                     finish();
-                }else {
+                } else {
                     Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                 }
             }

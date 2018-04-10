@@ -8,33 +8,38 @@
     android:orientation="vertical"
     tools:context="com.zhuandian.car.RegeistActivity">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_launcher" />
+
     <EditText
-        android:textSize="14sp"
         android:id="@+id/ed_name"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/ed_bg"
         android:hint="请输入账号"
-        android:paddingLeft="15dp" />
+        android:paddingLeft="15dp"
+        android:textSize="14sp" />
 
     <EditText
-        android:textSize="14sp"
         android:id="@+id/ed_password"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/ed_bg"
         android:hint="请输入密码"
         android:inputType="textPassword"
-        android:paddingLeft="15dp" />
+        android:paddingLeft="15dp"
+        android:textSize="14sp" />
 
     <EditText
-        android:textSize="14sp"
         android:id="@+id/ed_invate"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/ed_bg"
         android:hint="邀请人姓名+真实姓名"
-        android:paddingLeft="15dp" />
+        android:paddingLeft="15dp"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_regeist"

@@ -1,5 +1,6 @@
 package com.zhuandian.car;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
@@ -42,7 +43,7 @@ public class RegeistActivity extends AppCompatActivity {
         userName = edName.getText().toString();
         passWord = edPassword.getText().toString();
         invateName = edInvate.getText().toString();
-        MyUser bu = new MyUser();
+        final MyUser bu = new MyUser();
         bu.setUsername(userName);
         bu.setPassword(passWord);
         bu.setInvateName(invateName);

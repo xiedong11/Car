@@ -18,6 +18,15 @@ public class CarEntity extends BmobObject implements Serializable{
     private String name;
     private String phone;
     private String invate;
+    private boolean isNewCar;
+
+    public boolean isNewCar() {
+        return isNewCar;
+    }
+
+    public void setNewCar(boolean newCar) {
+        isNewCar = newCar;
+    }
 
     public String getInvate() {
         return invate;

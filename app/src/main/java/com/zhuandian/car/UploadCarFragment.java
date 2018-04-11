@@ -3,7 +3,6 @@ package com.zhuandian.car;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -16,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +26,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import cn.bmob.v3.Bmob;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -36,6 +39,10 @@ import cn.bmob.v3.listener.UploadFileListener;
  * Created by xiedong
  */
 public class UploadCarFragment extends Fragment {
+    @BindView(R.id.rb_new)
+    RadioButton rbNew;
+    @BindView(R.id.rb_old)
+    RadioButton rbOld;
     private View mView;
     private ImageView goodsImageView;
     private EditText titleEditText;
@@ -45,21 +52,19 @@ public class UploadCarFragment extends Fragment {
     private EditText priceEditText;
     private Button commitButton;
     private CarEntity carEntity;
-//    private SweetAlertDialog pDialog;
+    //    private SweetAlertDialog pDialog;
     private TextView commit;
 
     private Bitmap mBitmap;
+    private boolean isNewCar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mView = inflater.inflate(R.layout.uploadgoods, null);
+        ButterKnife.bind(this, mView);
 
-
-        //初始化Bmob的SDK
-//        Bmob.initialize(getActivity(), "df25a6c6a79479d11a60f2e89c68b467");
-        //初始化控件
         initView();
 
         //加入dialog提示
@@ -77,9 +82,14 @@ public class UploadCarFragment extends Fragment {
         titleEditText = (EditText) mView.findViewById(R.id.ed_title);
         contentEditText = (EditText) mView.findViewById(R.id.ed_desc);
         nameEditText = (EditText) mView.findViewById(R.id.ed_name);
-        priceEditText= (EditText) mView.findViewById(R.id.ed_price);
+        priceEditText = (EditText) mView.findViewById(R.id.ed_price);
         phoneEditText = (EditText) mView.findViewById(R.id.ed_phone);
         commit = (TextView) mView.findViewById(R.id.commit);
+        if (rbNew.isChecked()) {
+            isNewCar = true;
+        } else if (rbOld.isChecked()) {
+            isNewCar = false;
+        }
 
         goodsImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,10 +118,10 @@ public class UploadCarFragment extends Fragment {
         String phone = phoneEditText.getText().toString();
         String title = titleEditText.getText().toString();
         String content = contentEditText.getText().toString();
-        String price  = priceEditText.getText().toString();
+        String price = priceEditText.getText().toString();
         Bitmap bitmap = mBitmap;
 
-        if("".equals(name) || "".equals(phone) ||"".equals(title) ||"".equals(content) ||"".equals(price) ||mBitmap==null){
+        if ("".equals(name) || "".equals(phone) || "".equals(title) || "".equals(content) || "".equals(price) || mBitmap == null) {
 //            new SweetAlertDialog(getActivity(),SweetAlertDialog.ERROR_TYPE)
 //                    .setTitleText("请完善商品信息")
 //                    .setContentText("商品信息所有条目都为必填项 ！！")
@@ -120,7 +130,7 @@ public class UploadCarFragment extends Fragment {
 //            pDialog.cancel();
 //            pDialog.dismiss();
             Toast.makeText(getActivity(), "请完善所有必填内容", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
 
             Log.i("xiedong：", "不该进来哇");
             carEntity = new CarEntity();
@@ -129,6 +139,7 @@ public class UploadCarFragment extends Fragment {
             carEntity.setPhone(phone);
             carEntity.setGoodsTiltle(title);
             carEntity.setGoodsContent(content);
+            carEntity.setNewCar(isNewCar);
 //        goodsBenn.setGoodsBitmap(bitmap);
 
 
@@ -231,4 +242,15 @@ public class UploadCarFragment extends Fragment {
     }
 
 
+    @OnClick({R.id.rb_new, R.id.rb_old})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rb_new:
+                isNewCar = true;
+                break;
+            case R.id.rb_old:
+                isNewCar = false;
+                break;
+        }
+    }
 }

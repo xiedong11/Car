@@ -14,7 +14,6 @@ import com.zhuandian.car.entity.MyUser;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -34,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
     }
 
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void done(MyUser myUser, BmobException e) {
                 if (e == null) {
-                    startActivity(new Intent(LoginActivity.this, ChoseCarActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString("user_id", user.getObjectId());

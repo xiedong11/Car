@@ -54,7 +54,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.MyViewHo
         //正则切割时间字符串 2016-10-06 14:58:06
         String time[] = carEntity.getCreatedAt().split(" ");
         viewHolder.tvTime.setText(time[0]);
-        Glide.with(context).load(carEntity.getGoodsUrl()).into(viewHolder.ivGoods);
+        Glide.with(context).load(carEntity.getGoodsUrl()).error(R.drawable.ic_launcher).into(viewHolder.ivGoods);
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         initTabState(R.id.ll_main);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fl_container, new CarListFragment(), "f")
+                .add(R.id.fl_container, new HomeFragment(), "f")
                 .commit();
     }
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ll_main:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fl_container, new UploadCarFragment(), "f")
+                        .add(R.id.fl_container, new HomeFragment(), "f")
                         .commit();
 //                intent = new Intent(this, CarListActivity.class);
 //                intent.putExtra("type", 1);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ll_car_shop:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fl_container, new CarListFragment(), "f")
+                        .add(R.id.fl_container, new HomeFragment(), "f")
                         .commit();
                 initTabState(R.id.ll_car_shop);
                 break;

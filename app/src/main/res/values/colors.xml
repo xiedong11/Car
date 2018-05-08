@@ -6,6 +6,7 @@
     <color name="color_26936af8">#26936af8</color>
     <color name="text_color_normal">#939393</color>
     <color name="text_color_select">#ff0000</color>
+    <color name="app_base_color">#000</color>
 
 
 </resources>

@@ -3,59 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:gravity="center"
+    android:background="@drawable/ic_login_bg"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.zhuandian.car.LoginActivity">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_launcher" />
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/ic_login_logo" />
 
-    <EditText
-        android:id="@+id/ed_name"
+    <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/ed_bg"
-        android:hint="请输入账号"
-        android:paddingLeft="15dp"
-        android:textSize="14sp" />
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:background="#33ffffff"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/ed_password"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/ed_bg"
-        android:hint="请输入密码"
-        android:inputType="textPassword"
-        android:paddingLeft="15dp"
-        android:textSize="14sp" />
+        <EditText
+            android:id="@+id/ed_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ed_bg"
+            android:hint="请输入账号"
+            android:paddingLeft="15dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/ed_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ed_bg"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_regeist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:textColor="#fff"
+            android:text="注册新用户？" />
+
+        <TextView
+            android:id="@+id/tv_gt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:textColor="#fff"
+            android:text="找回密码请联系管理员" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_login"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
         android:layout_marginTop="30dp"
-        android:background="@color/colorPrimary"
+        android:background="#E94333"
         android:gravity="center"
         android:text="登 录"
-        android:textColor="#fff"
+        android:textColor="#FFFFFF"
         android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tv_regeist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="right"
-        android:text="注册新用户？" />
-
-    <TextView
-        android:id="@+id/tv_gt_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="right"
-        android:text="找回密码请联系管理员" />
 </LinearLayout>

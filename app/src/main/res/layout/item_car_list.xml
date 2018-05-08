@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/iv_goods"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="90dp"
+                android:layout_height="78dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:src="@drawable/add" />
@@ -62,9 +63,9 @@
                 android:singleLine="true"
                 android:text="" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="10dp"
                 android:gravity="bottom"
@@ -74,21 +75,32 @@
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:text=""
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:text="9999"
                     android:textColor="#ff0000"
                     android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginRight="15dp"
                     android:text="好评率 90%"
-                    android:textColor="#b6b6b6"
+                    android:textColor="#9999"
                     android:textSize="10sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#e0e0e0" />
 </LinearLayout>

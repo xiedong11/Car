@@ -1,4 +1,4 @@
-package com.zhuandian.car;
+package com.zhuandian.car.tabfragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhuandian.car.LoginActivity;
+import com.zhuandian.car.R;
 import com.zhuandian.car.entity.MyUser;
 
 import butterknife.BindView;

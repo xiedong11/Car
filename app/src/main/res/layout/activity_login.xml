@@ -15,50 +15,52 @@
         android:src="@drawable/ic_login_logo" />
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_margin="20dp"
         android:layout_marginTop="50dp"
-        android:background="#33ffffff"
+        android:background="@drawable/shape_login_bg"
+        android:gravity="center"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/ed_name"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入账号"
-            android:paddingLeft="15dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_username"
+            android:gravity="center_vertical"
+            android:hint=" 请输入账号"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_hint"
             android:textSize="14sp" />
 
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/ed_password"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入密码"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_password"
+            android:gravity="center_vertical"
+            android:hint=" 请输入密码"
             android:inputType="textPassword"
-            android:paddingLeft="15dp"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_hint"
             android:textSize="14sp" />
 
-
-        <TextView
-            android:id="@+id/tv_regeist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="right"
-            android:textColor="#fff"
-            android:text="注册新用户？" />
 
         <TextView
             android:id="@+id/tv_gt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:gravity="right"
-            android:textColor="#fff"
-            android:text="找回密码请联系管理员" />
+            android:text="找回密码请联系管理员"
+            android:textColor="#fff" />
     </LinearLayout>
 
     <TextView
@@ -73,4 +75,13 @@
         android:text="登 录"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_regeist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="还没有账号，点击注册"
+        android:textColor="#fff" />
 </LinearLayout>

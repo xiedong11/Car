@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zhuandian.car.tabfragment.CarShopFragment;
+import com.zhuandian.car.tabfragment.HomeFragment;
+import com.zhuandian.car.tabfragment.MineFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivMime;
     @BindView(R.id.tv_mine)
     TextView tvMine;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ll_car_shop:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fl_container, new HomeFragment(), "f")
+                        .add(R.id.fl_container, CarShopFragment.getInstance(true, true), "f")
                         .commit();
                 initTabState(R.id.ll_car_shop);
                 break;
@@ -84,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param tabId
      */
-    private void initTabState(int tabId) {
+    public void initTabState(int tabId) {
         setNormalState();
         switch (tabId) {
             case R.id.ll_main:

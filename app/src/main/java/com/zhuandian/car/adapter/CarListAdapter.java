@@ -1,4 +1,4 @@
-package com.zhuandian.car;
+package com.zhuandian.car.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.zhuandian.car.R;
 import com.zhuandian.car.entity.CarEntity;
 
 import java.util.List;

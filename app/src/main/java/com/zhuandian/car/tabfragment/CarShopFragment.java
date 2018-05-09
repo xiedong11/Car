@@ -1,4 +1,4 @@
-package com.zhuandian.car;
+package com.zhuandian.car.tabfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhuandian.car.CarDetailActivity;
+import com.zhuandian.car.adapter.CarListAdapter;
+import com.zhuandian.car.R;
+import com.zhuandian.car.UploadCarActivity;
 import com.zhuandian.car.entity.CarEntity;
 
 import java.util.List;
@@ -27,7 +31,7 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by xiedong
  */
-public class HomeFragment extends Fragment {
+public class CarShopFragment extends Fragment {
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
@@ -41,18 +45,30 @@ public class HomeFragment extends Fragment {
     private View mView;
     private List<String> mDatas;
     private CarListAdapter adapter;
+    private boolean isNewCar;
+    private boolean isShowAll;
 
+    public static CarShopFragment getInstance(Boolean isNewCar, Boolean showAll) {
+        CarShopFragment fragment = new CarShopFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("is_new_car", isNewCar);
+        bundle.getBoolean("show_all", showAll);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_home, null);
+        mView = inflater.inflate(R.layout.fragment_car_shop, null);
         rvCarList = (RecyclerView) mView.findViewById(R.id.rv_car_list);
         ButterKnife.bind(this, mView);
-        tvTitle.setText("首页");
+        isNewCar = getArguments().getBoolean("is_new_car");
+        isShowAll = getArguments().getBoolean("show_all");
+        tvTitle.setText(isShowAll ? "车城" : isNewCar ? "新车" : "二手车");
         ivRightImage.setVisibility(View.VISIBLE);
         ivRightImage.setImageResource(R.drawable.ic_upload_car);
-        initData(true);
+        initData(isNewCar);
         return mView;
     }
 
@@ -61,7 +77,9 @@ public class HomeFragment extends Fragment {
         final CarEntity carEntity = new CarEntity();
         BmobQuery<CarEntity> query = new BmobQuery<CarEntity>();
         query.order("-updatedAT");
-        query.addWhereEqualTo("isNewCar", isNewCar);
+        if (!isShowAll) {
+            query.addWhereEqualTo("isNewCar", isNewCar);
+        }
         query.setLimit(50);
         //执行查询方法
         query.findObjects(new FindListener<CarEntity>() {

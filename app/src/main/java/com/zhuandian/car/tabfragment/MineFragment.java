@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 
@@ -72,6 +73,7 @@ public class MineFragment extends Fragment {
     @OnClick(R.id.tv_logout)
     public void onViewClicked() {
         startActivity(new Intent(getActivity(), LoginActivity.class));
+        BmobUser.logOut();
         getActivity().finish();
     }
 

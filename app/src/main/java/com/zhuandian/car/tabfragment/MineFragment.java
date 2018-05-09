@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhuandian.car.GetPasswordActivity;
 import com.zhuandian.car.LoginActivity;
 import com.zhuandian.car.R;
 import com.zhuandian.car.entity.MyUser;
@@ -70,11 +71,19 @@ public class MineFragment extends Fragment {
     }
 
 
-    @OnClick(R.id.tv_logout)
-    public void onViewClicked() {
-        startActivity(new Intent(getActivity(), LoginActivity.class));
-        BmobUser.logOut();
-        getActivity().finish();
+    @OnClick({R.id.tv_logout, R.id.ll_alert_password})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_logout:
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                BmobUser.logOut();
+                getActivity().finish();
+                break;
+            case R.id.ll_alert_password:
+                startActivity(new Intent(getActivity(), GetPasswordActivity.class));
+                break;
+        }
+
     }
 
 }

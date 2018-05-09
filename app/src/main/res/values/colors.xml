@@ -9,6 +9,7 @@
     <color name="app_base_color">#000</color>
     <color name="color_white">#fff</color>
     <color name="color_hint">#999999</color>
+    <color name="color_fragment_bg">#eeeeee</color>
 
 
 </resources>

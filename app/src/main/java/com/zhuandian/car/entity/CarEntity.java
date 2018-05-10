@@ -19,6 +19,7 @@ public class CarEntity extends BmobObject implements Serializable{
     private String phone;
     private String invate;
     private boolean isNewCar;
+    private String price;
 
     public boolean isNewCar() {
         return isNewCar;
@@ -43,9 +44,6 @@ public class CarEntity extends BmobObject implements Serializable{
     public void setPrice(String price) {
         this.price = price;
     }
-
-    private String price;
-
 
     public String getGoodsUrl() {
         return goodsUrl;

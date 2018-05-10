@@ -6,12 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.zhuandian.car.entity.BillEntity;
 import com.zhuandian.car.entity.CarEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * desc :详细信息页
@@ -29,9 +34,9 @@ public class CarDetailActivity extends AppCompatActivity {
     @BindView(R.id.tv_price)
     TextView tvPrice;
     @BindView(R.id.maijianame)
-    TextView maijianame;
+    TextView tvSellerName;
     @BindView(R.id.phone)
-    TextView phone;
+    TextView tvSellerPhone;
     @BindView(R.id.commit)
     TextView commit;
     @BindView(R.id.call_me)
@@ -44,6 +49,13 @@ public class CarDetailActivity extends AppCompatActivity {
     ImageView ivRightImage;
     @BindView(R.id.tv_right_text)
     TextView tvRightText;
+    private String carInfo;
+    private String invateName;
+    private String invate;
+    private String carPrice;
+    private String name;
+    private String sellerPhone;
+    private String carTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +68,38 @@ public class CarDetailActivity extends AppCompatActivity {
         CarEntity entity = (CarEntity) bundle.getSerializable("entity");
         Glide.with(this).load(entity.getGoodsUrl()).error(R.drawable.ic_banner_three).into(image);
 //        price.setText(entity.getPrice());
-        tvDesc.setText(entity.getGoodsContent());
-        tvInvate.setText(entity.getInvate());
+        carInfo = entity.getGoodsContent();
+        invateName = entity.getInvate();
+        sellerPhone = entity.getPhone();
+        carPrice = entity.getPrice();
+        name = entity.getName();
+        carTitle = entity.getGoodsTiltle();
+
+        tvDesc.setText(carInfo);
+        tvInvate.setText(invateName);
+        tvPrice.setText(carPrice + " 元");
+        tvSellerName.setText(name);
+        tvSellerPhone.setText(sellerPhone);
+    }
+
+    @OnClick(R.id.commit)
+    public void onViewClicked() {
+        BillEntity billEntity = new BillEntity();
+        billEntity.setCarInfo(carInfo);
+        billEntity.setCarName(name);
+        billEntity.setCarPrice(carPrice);
+        billEntity.setInvateName(invateName);
+        billEntity.setPhone(sellerPhone);
+
+        billEntity.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if (e == null) {
+                    Toast.makeText(CarDetailActivity.this, "已成功报单，请等待管理员练习您....", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 }

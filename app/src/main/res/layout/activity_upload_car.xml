@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#fff">
+    android:background="#fff"
+    android:orientation="vertical">
 
     <include layout="@layout/layout_top_common" />
 
@@ -22,27 +22,64 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:padding="12dp"
+                        android:text="车型号"
+                        android:textColor="#313131"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/ed_title"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="6"
+                        android:background="@null"
+                        android:gravity="left|center"
+                        android:hint="车型号"
+                        android:padding="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <include layout="@layout/divider_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:background="#FFFFFF"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:padding="10dp"
-                        android:text="上传图片"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="12dp"
+                        android:text="车价格"
+                        android:textColor="#313131"
+                        android:textSize="16sp" />
 
-                    <ImageView
-                        android:id="@+id/iv_goods"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/add" />
-
+                    <EditText
+                        android:id="@+id/ed_price"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="6"
+                        android:background="@null"
+                        android:gravity="left|center"
+                        android:hint="以元为单位"
+                        android:padding="5dp"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -64,7 +101,7 @@
                     <EditText
                         android:id="@+id/ed_desc"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="150dp"
                         android:layout_gravity="left"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="10dp"
@@ -78,68 +115,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:padding="12dp"
-                        android:text="车型号"
-                        android:textColor="#313131"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/ed_title"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="6"
-                        android:background="@null"
-                        android:gravity="left|bottom"
-                        android:hint="车型号"
-                        android:padding="5dp"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <include layout="@layout/divider_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:orientation="horizontal">
-
-                    <TextView
-
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:padding="12dp"
-                        android:text="价格"
-                        android:textColor="#313131"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/ed_price"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="6"
-                        android:background="@null"
-                        android:gravity="left|bottom"
-                        android:hint="以元为单位"
-                        android:padding="5dp"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,11 +137,10 @@
                         android:id="@+id/ed_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="6"
                         android:background="@null"
-                        android:gravity="left|bottom"
+                        android:gravity="left|center"
                         android:hint="您的称呼"
                         android:padding="5dp"
                         android:textSize="15sp" />
@@ -195,14 +169,68 @@
                         android:id="@+id/ed_phone"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
                         android:layout_weight="6"
                         android:background="@null"
-                        android:gravity="left|bottom"
+                        android:gravity="left|center"
                         android:hint="电话号码"
                         android:padding="5dp"
                         android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <include layout="@layout/divider_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:padding="12dp"
+                        android:text="推荐人"
+                        android:textColor="#313131"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/ed_invater"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="6"
+                        android:background="@null"
+                        android:gravity="left|center"
+                        android:hint="请输入推荐人姓名"
+                        android:padding="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:text="上传图片"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_goods"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:paddingBottom="10dp"
+                        android:src="@drawable/ic_default_upload" />
+
 
                 </LinearLayout>
 
@@ -215,16 +243,30 @@
 
                     <RadioButton
                         android:id="@+id/rb_new"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/selector_switch"
+                        android:button="@null"
+                        android:checked="true" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
+                        android:layout_marginLeft="5dp"
                         android:text="新车" />
 
                     <RadioButton
                         android:id="@+id/rb_old"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/selector_switch"
+                        android:button="@null" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="5dp"
                         android:text="二手车" />
                 </RadioGroup>
 
@@ -233,17 +275,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="#FFFFFF"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="30dp">
 
                     <TextView
                         android:id="@+id/commit"
-                        android:layout_width="0dp"
+                        android:layout_width="330dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:background="#f00"
                         android:gravity="center"
                         android:padding="12dp"
-                        android:text="提交商品"
-                        android:textColor="#ff0000"
+                        android:text="提交"
+                        android:textColor="#fff"
                         android:textSize="16sp" />
                 </LinearLayout>
 

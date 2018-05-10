@@ -60,6 +60,8 @@ public class UploadCarActivity extends Activity {
     ImageView ivRightImage;
     @BindView(R.id.tv_right_text)
     TextView tvRightText;
+    @BindView(R.id.ed_invater)
+    EditText edInvater;
     private Bitmap mBitmap;
     private boolean isNewCar;
     private CarEntity carEntity;
@@ -109,6 +111,7 @@ public class UploadCarActivity extends Activity {
         String title = titleEditText.getText().toString();
         String content = contentEditText.getText().toString();
         String price = priceEditText.getText().toString();
+        String invaterName = edInvater.getText().toString();
         Bitmap bitmap = mBitmap;
 
         if ("".equals(name) || "".equals(phone) || "".equals(title) || "".equals(content) || "".equals(price) || mBitmap == null) {
@@ -122,7 +125,6 @@ public class UploadCarActivity extends Activity {
             Toast.makeText(UploadCarActivity.this, "请完善所有必填内容", Toast.LENGTH_SHORT).show();
         } else {
 
-            Log.i("xiedong：", "不该进来哇");
             carEntity = new CarEntity();
             carEntity.setPrice(price);
             carEntity.setName(name);
@@ -130,6 +132,7 @@ public class UploadCarActivity extends Activity {
             carEntity.setGoodsTiltle(title);
             carEntity.setGoodsContent(content);
             carEntity.setNewCar(isNewCar);
+            carEntity.setInvate(invaterName);
 //        goodsBenn.setGoodsBitmap(bitmap);
 
 

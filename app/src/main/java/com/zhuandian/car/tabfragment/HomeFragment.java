@@ -13,13 +13,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.youth.banner.Banner;
 import com.zhuandian.car.CarDetailActivity;
+import com.zhuandian.car.GlideImageLoader;
 import com.zhuandian.car.MainActivity;
-import com.zhuandian.car.adapter.CarListAdapter;
 import com.zhuandian.car.R;
 import com.zhuandian.car.UploadCarActivity;
+import com.zhuandian.car.adapter.CarListAdapter;
 import com.zhuandian.car.entity.CarEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,26 +45,44 @@ public class HomeFragment extends Fragment {
     ImageView ivRightImage;
     @BindView(R.id.tv_right_text)
     TextView tvRightText;
-    private RecyclerView rvCarList;
+    @BindView(R.id.banner)
+    Banner bannerGuideContent;
+    @BindView(R.id.rv_car_list)
+    RecyclerView rvCarList;
     private View mView;
     private List<String> mDatas;
     private CarListAdapter adapter;
     private MainActivity activity;
+    List<Integer> images = new ArrayList<>();
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_home, null);
-        rvCarList = (RecyclerView) mView.findViewById(R.id.rv_car_list);
         ButterKnife.bind(this, mView);
         tvTitle.setText("首页");
         ivRightImage.setVisibility(View.VISIBLE);
         ivRightImage.setImageResource(R.drawable.ic_upload_car);
         activity = (MainActivity) getActivity();
+        initBanner();
         initData();
         return mView;
     }
+
+    private void initBanner() {
+        images.add(R.drawable.ic_banner_one);
+        images.add(R.drawable.ic_banner_two);
+        images.add(R.drawable.ic_banner_three);
+
+        bannerGuideContent.setImageLoader(new GlideImageLoader())
+                .setImages(images)
+//                .startAutoPlay();
+                .start();
+
+
+    }
+
 
     private void initData() {
         //查询数据库中的具体商品信息
@@ -123,5 +144,9 @@ public class HomeFragment extends Fragment {
         }
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        bannerGuideContent.stopAutoPlay();
+    }
 }

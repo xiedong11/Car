@@ -13,12 +13,15 @@ import com.zhuandian.car.entity.CarEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * desc :详细信息页
+ * author：xiedong
+ * data：2018/3/10
+ */
 public class CarDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.image)
     ImageView image;
-    @BindView(R.id.price)
-    TextView price;
     @BindView(R.id.tv_desc)
     TextView tvDesc;
     @BindView(R.id.tv_invate)
@@ -33,17 +36,26 @@ public class CarDetailActivity extends AppCompatActivity {
     TextView commit;
     @BindView(R.id.call_me)
     LinearLayout callMe;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.iv_right_image)
+    ImageView ivRightImage;
+    @BindView(R.id.tv_right_text)
+    TextView tvRightText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
         ButterKnife.bind(this);
-        Intent intent=getIntent();
+        tvTitle.setText("详细信息");
+        Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         CarEntity entity = (CarEntity) bundle.getSerializable("entity");
-        Glide.with(this).load(entity.getGoodsUrl()).into(image);
-        price.setText(entity.getPrice());
+        Glide.with(this).load(entity.getGoodsUrl()).error(R.drawable.ic_banner_three).into(image);
+//        price.setText(entity.getPrice());
         tvDesc.setText(entity.getGoodsContent());
         tvInvate.setText(entity.getInvate());
     }

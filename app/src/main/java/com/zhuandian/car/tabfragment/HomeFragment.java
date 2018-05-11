@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
         ivRightImage.setVisibility(View.VISIBLE);
         ivRightImage.setImageResource(R.drawable.ic_upload_car);
         activity = (MainActivity) getActivity();
+        rvCarList.setNestedScrollingEnabled(false);  //禁止Ryecyclerview滑动
         initBanner();
         initData();
         return mView;

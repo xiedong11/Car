@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhuandian.car.CarDetailActivity;
-import com.zhuandian.car.adapter.CarListAdapter;
 import com.zhuandian.car.R;
 import com.zhuandian.car.UploadCarActivity;
+import com.zhuandian.car.adapter.CarListAdapter;
 import com.zhuandian.car.entity.CarEntity;
 
 import java.util.List;
@@ -41,7 +41,14 @@ public class CarShopFragment extends Fragment {
     ImageView ivRightImage;
     @BindView(R.id.tv_right_text)
     TextView tvRightText;
-    private RecyclerView rvCarList;
+    @BindView(R.id.tv_all)
+    TextView tvAll;
+    @BindView(R.id.tv_new)
+    TextView tvNew;
+    @BindView(R.id.tv_old)
+    TextView tvOld;
+    @BindView(R.id.rv_car_list)
+    RecyclerView rvCarList;
     private View mView;
     private List<String> mDatas;
     private CarListAdapter adapter;
@@ -61,11 +68,11 @@ public class CarShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_car_shop, null);
-        rvCarList = (RecyclerView) mView.findViewById(R.id.rv_car_list);
         ButterKnife.bind(this, mView);
         isNewCar = getArguments().getBoolean("is_new_car");
         isShowAll = getArguments().getBoolean("show_all");
-        tvTitle.setText(isShowAll ? "车城" : isNewCar ? "新车" : "二手车");
+        tvTitle.setText("车城");
+        initTopTab(isShowAll ? R.id.tv_all : isNewCar ? R.id.tv_new : R.id.tv_old);
         ivRightImage.setVisibility(View.VISIBLE);
         ivRightImage.setImageResource(R.drawable.ic_upload_car);
         initData(isNewCar);
@@ -110,23 +117,57 @@ public class CarShopFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.ll_old_car, R.id.ll_new_car, R.id.iv_right_image})
+    @OnClick({R.id.tv_all, R.id.tv_new, R.id.tv_old})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.ll_new_car:
+            case R.id.tv_all:
+                isShowAll = true;
                 initData(true);
+                initTopTab(R.id.tv_all);
+                Toast.makeText(getActivity(), "切换全部列表", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.tv_new:
+                isShowAll = false;
+                initData(true);
+                initTopTab(R.id.tv_new);
                 Toast.makeText(getActivity(), "切换为新车列表", Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.ll_old_car:
+            case R.id.tv_old:
+                isShowAll = false;
+                initTopTab(R.id.tv_old);
                 initData(false);
                 Toast.makeText(getActivity(), "切换为二手车列表", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
-                break;
-            case R.id.iv_right_image:
-                startActivity(new Intent(getActivity(), UploadCarActivity.class));
                 break;
         }
+    }
+
+    private void initTopTab(int tabId) {
+        initAllTopTab();
+        switch (tabId) {
+            case R.id.tv_all:
+                tvAll.setBackgroundColor(getResources().getColor(R.color.color_white));
+                tvAll.setTextColor(getResources().getColor(R.color.app_base_color));
+                break;
+            case R.id.tv_new:
+                tvNew.setBackgroundColor(getResources().getColor(R.color.color_white));
+                tvNew.setTextColor(getResources().getColor(R.color.app_base_color));
+                break;
+            case R.id.tv_old:
+                tvOld.setBackgroundColor(getResources().getColor(R.color.color_white));
+                tvOld.setTextColor(getResources().getColor(R.color.app_base_color));
+                break;
+        }
+    }
+
+    private void initAllTopTab() {
+        tvAll.setBackgroundColor(getResources().getColor(R.color.app_base_color));
+        tvNew.setBackgroundColor(getResources().getColor(R.color.app_base_color));
+        tvOld.setBackgroundColor(getResources().getColor(R.color.app_base_color));
+        tvAll.setTextColor(getResources().getColor(R.color.color_white));
+        tvNew.setTextColor(getResources().getColor(R.color.color_white));
+        tvOld.setTextColor(getResources().getColor(R.color.color_white));
     }
 
 

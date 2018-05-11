@@ -37,12 +37,12 @@
             android:textSize="14sp" />
 
         <EditText
-            android:layout_marginTop="10dp"
             android:id="@+id/ed_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_password"
             android:gravity="center_vertical"
             android:hint=" 请输入密码"
@@ -51,17 +51,17 @@
             android:textColorHint="@color/color_hint"
             android:textSize="14sp" />
 
-
-        <TextView
-            android:id="@+id/tv_gt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:gravity="right"
-            android:text="找回密码请联系管理员"
-            android:textColor="#fff" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_gt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="找回密码请联系管理员"
+        android:textColor="#fff" />
 
     <TextView
         android:id="@+id/tv_login"

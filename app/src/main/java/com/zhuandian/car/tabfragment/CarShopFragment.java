@@ -111,6 +111,7 @@ public class CarShopFragment extends Fragment {
                         }
                     });
                 }
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -125,14 +126,12 @@ public class CarShopFragment extends Fragment {
                 initData(true);
                 initTopTab(R.id.tv_all);
                 Toast.makeText(getActivity(), "切换全部列表", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
                 break;
             case R.id.tv_new:
                 isShowAll = false;
                 initData(true);
                 initTopTab(R.id.tv_new);
                 Toast.makeText(getActivity(), "切换为新车列表", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
                 break;
             case R.id.tv_old:
                 isShowAll = false;

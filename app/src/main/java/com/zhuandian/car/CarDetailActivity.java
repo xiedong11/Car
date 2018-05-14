@@ -95,7 +95,7 @@ public class CarDetailActivity extends AppCompatActivity {
             @Override
             public void done(String s, BmobException e) {
                 if (e == null) {
-                    Toast.makeText(CarDetailActivity.this, "已成功报单，请等待管理员练习您....", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CarDetailActivity.this, "已成功报单，请等待管理员联系您....", Toast.LENGTH_SHORT).show();
                 }
             }
         });

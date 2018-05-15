@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_login_bg"
+    android:background="@drawable/ic_register_bg"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.zhuandian.car.RegeistActivity">

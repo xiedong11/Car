@@ -219,6 +219,8 @@ public class UploadCarActivity extends Activity {
                 e.printStackTrace();
             } finally {
                 try {
+                    if (b == null)
+                        return;
                     b.flush();
                     b.close();
                 } catch (IOException e) {

@@ -15,6 +15,6 @@ public class APP extends Application{
     public void onCreate() {
         super.onCreate();
         //初始化Bmob的SDK
-        Bmob.initialize(this, "590b24472b9780c72d3dc53f2078aa87");
+        Bmob.initialize(this, "b07215b888aafc465d5ce76a81d624d9");
     }
 }
